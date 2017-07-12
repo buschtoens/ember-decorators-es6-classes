@@ -1,5 +1,13 @@
-{{classic-component "baz" foo="qux"}}
+<label>positionalParam:</label>
+{{one-way-input positionalParam update=(action (mut positionalParam))}}<br>
+
+<label>foo:</label>
+{{one-way-input foo             update=(action (mut foo))}}
 
 <hr>
 
-{{es6-component     "baz" foo="qux"}}
+{{classic-component positionalParam foo=foo}}
+
+<hr>
+
+{{es6-component     positionalParam foo=foo}}
