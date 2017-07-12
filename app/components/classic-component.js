@@ -10,14 +10,21 @@ export default Component.extend({
 
   setOnInit: null,
 
-  @computed('foo', 'setOnInit')
-  computed(foo, setOnInit) {
-    return `${foo} - ${setOnInit}`;
+  setOnDidReceiveAttrs: null,
+
+  @computed('foo', 'setOnInit', 'setOnDidReceiveAttrs')
+  computed(foo, setOnInit, setOnDidReceiveAttrs) {
+    return `${foo} - ${setOnInit} - ${setOnDidReceiveAttrs}`;
   },
 
   @on('init')
   eventedInit() {
     set(this, 'setOnInit', Date.now());
+  },
+
+  @on('didReceiveAttrs')
+  eventedDidReceiveAttrs() {
+    set(this, 'setOnDidReceiveAttrs', Date.now());
   }
 }).reopenClass({
   positionalParams: 'params'

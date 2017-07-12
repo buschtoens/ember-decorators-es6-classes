@@ -12,6 +12,8 @@ export default class extends Component{
 
   setOnInit = null;
 
+  setOnDidReceiveAttrs = null;
+
   @computed('foo', 'setOnInit')
   computed(foo, setOnInit) {
     return `${foo} - ${setOnInit}`;
@@ -20,5 +22,10 @@ export default class extends Component{
   @on('init')
   eventedInit() {
     set(this, 'setOnInit', Date.now());
+  }
+
+  @on('didReceiveAttrs')
+  eventedDidReceiveAttrs() {
+    set(this, 'setOnDidReceiveAttrs', Date.now());
   }
 }
