@@ -14,6 +14,21 @@ export default class extends Component{
 
   setOnDidReceiveAttrs = null;
 
+  constructor() {
+    super();
+    console.log('constructor', this.foo);
+  }
+
+  init() {
+    super.init(...arguments);
+    console.log('init', this.foo);
+  }
+
+  didReceiveAttrs()  {
+    this._super(...arguments);
+    console.log('didReceiveAttrs', this.foo);
+  }
+
   @computed('foo', 'setOnInit')
   computed(foo, setOnInit) {
     return `${foo} - ${setOnInit}`;
