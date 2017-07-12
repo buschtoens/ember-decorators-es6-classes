@@ -4,6 +4,11 @@ import { computed } from 'ember-decorators/object';
 import { on } from 'ember-decorators/object/evented';
 
 export default class extends Component{
+  static create() {
+    console.log('create', arguments, super.create);
+    return super.create(...arguments);
+  }
+
   static positionalParams = 'params';
 
   params = null;
@@ -15,8 +20,9 @@ export default class extends Component{
   setOnDidReceiveAttrs = null;
 
   constructor() {
+    console.log('constructor (pre super)');
     super();
-    console.log('constructor', this.foo);
+    console.log('constructor (post super)', this.foo);
   }
 
   init() {
